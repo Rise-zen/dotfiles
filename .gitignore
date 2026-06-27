@@ -8,7 +8,7 @@
 **/.source_dir
 
 # astrium live palette (machine-generated each wallpaper change)
-colors-hyprland.lua
+colors-hyprland.conf
 
 # third-party / not mine — the shell, its controller scripts and settings
 scripts/

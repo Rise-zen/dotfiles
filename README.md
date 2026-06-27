@@ -1,49 +1,29 @@
 # hypr
 
-Hyprland configuration written in **native Lua** — no `.conf`, no compiler, no
-external preprocessor. Hyprland 0.50+ ships a real Lua config loader; this repo
-uses it directly. Every setting is plain Lua, split into self-contained modules.
+Hyprland configuration — a single `hyprland.conf` with structured sections,
+caelestia-style animations, and live wallpaper-driven theming via
+[astrium](https://github.com/Rise-zen/astrium).
 
 ## Requirements
 
-- Hyprland **0.55+** (built with Lua support — the default on recent Arch/CachyOS)
+- Hyprland 0.40+
 - `hyprctl` on `PATH`
-
-## Layout
-
-```
-hyprland.lua        entry point — dofiles each module in order
-modules/
-  monitors.lua      outputs / modes
-  env.lua           environment variables
-  general.lua       borders, gaps
-  decoration.lua    rounding, shadow, blur
-  input.lua         keyboard, touchpad
-  animations.lua    bezier curves + animation timings
-  windowrules.lua   window rules
-  keybindings.lua   keybinds
-  autostart.lua     exec-on-start
-```
-
-`hyprland.lua` uses `dofile` (not `require`) so `hyprctl reload` re-runs every
-module fresh, including live edits.
 
 ## Install
 
 ```sh
-git clone <this-repo> ~/.config/hypr
+git clone https://github.com/Rise-zen/dotfiles ~/.config/hypr
 ```
 
-Then log into Hyprland. With no `hyprland.conf` present, Hyprland loads
-`hyprland.lua` automatically. Edit a module and run `hyprctl reload`.
+Then log into Hyprland.
 
 ## Keybinds
 
 | Key | Action |
 |-----|--------|
-| `SUPER + SPACE` | terminal |
-| `SUPER + E` | browser |
-| `SUPER + R` | launcher |
+| `SUPER + SPACE` | terminal (kitty) |
+| `SUPER + E` | browser (chromium) |
+| `SUPER + R` | launcher (wofi) |
 | `SUPER + Q` | close window |
 | `SUPER + F` | toggle floating |
 | `SUPER + 1..0` | switch workspace |
@@ -54,13 +34,13 @@ Then log into Hyprland. With no `hyprland.conf` present, Hyprland loads
 ## Live theming
 
 Border and shadow colours are driven live by
-[astrium](https://github.com/zerkal-beta/astrium), which extracts a palette from
-the wallpaper and writes `~/.cache/astrium/colors-hyprland.lua` (loaded at the
-end of `hyprland.lua`) while also pushing changes via `hyprctl keyword`. The
-config works fine without it — defaults are baked into the modules.
+[astrium](https://github.com/Rise-zen/astrium), which extracts a palette from
+the wallpaper and writes `~/.cache/astrium/colors-hyprland.conf` (sourced at the
+end of the config) while also pushing changes via `hyprctl keyword`. The config
+works fine without it — defaults are baked in.
 
 ## Note
 
-The status bar (an [ilyamiro/quickshell](https://github.com/ilyamiro/dotfiles)
-config) is **not** included here. Keybinds that reference
-`scripts/quickshell/` expect it to be installed separately.
+The status bar ([ilyamiro/quickshell](https://github.com/ilyamiro/dotfiles))
+is **not** included. Keybinds that reference `scripts/quickshell/` expect it
+installed separately.

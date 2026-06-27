@@ -1,6 +1,0 @@
-hl.env("WALLPAPER_DIR",         "/home/Rise/Wallpaper")
-hl.env("QT_QPA_PLATFORM",       "wayland")
-hl.env("QSG_RHI_BACKEND",       "vulkan")
-hl.env("QSG_RENDER_LOOP",       "threaded")
-hl.env("__GL_VRR_ALLOWED",      "1")
-hl.env("__GL_MaxFramesAllowed", "1")
